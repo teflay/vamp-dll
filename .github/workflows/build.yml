@@ -13,6 +13,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Setup MSVC
+      uses: ilammy/msvc-dev-cmd@v1
+
     - name: Setup CMake
       uses: lukka/get-cmake@latest
 
@@ -20,7 +23,7 @@ jobs:
       uses: seanmiddleditch/gha-setup-ninja@v3
 
     - name: Configure CMake
-      run: cmake -S src -B build -G "Ninja Multi-Config"
+      run: cmake -S src -B build -G "Ninja Multi-Config" -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl
 
     - name: Build Release
       run: cmake --build build --config Release
