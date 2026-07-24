@@ -1,0 +1,3 @@
+#pragma once
+
+#define VAMP_VERSION "@VAMP_VERSION@"
